@@ -20,6 +20,7 @@
 		9F26A9092637792A00C09F5F /* TweetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F26A9072637792A00C09F5F /* TweetTableViewCell.xib */; };
 		9F26A90F2637A49B00C09F5F /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F26A90E2637A49B00C09F5F /* NetworkClient.swift */; };
 		9F26A9172637A56600C09F5F /* TimelineRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F26A9162637A56600C09F5F /* TimelineRequest.swift */; };
+		9F26A91F2638BBB000C09F5F /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F26A91E2638BBB000C09F5F /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		9F26A9072637792A00C09F5F /* TweetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetTableViewCell.xib; sourceTree = "<group>"; };
 		9F26A90E2637A49B00C09F5F /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		9F26A9162637A56600C09F5F /* TimelineRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineRequest.swift; sourceTree = "<group>"; };
+		9F26A91E2638BBB000C09F5F /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				009C4C741D9F0CD600F0BC6C /* LaunchScreen.storyboard */,
 				009C4C771D9F0CD600F0BC6C /* Info.plist */,
 				9F26A8FD2637778100C09F5F /* Cells */,
+				9F26A9232638BBB400C09F5F /* Helper */,
 				9F26A8F4263771E400C09F5F /* Models */,
 				9F26A90D2637A47800C09F5F /* Networking */,
 			);
@@ -175,6 +178,14 @@
 				9F26A90E2637A49B00C09F5F /* NetworkClient.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		9F26A9232638BBB400C09F5F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				9F26A91E2638BBB000C09F5F /* ImageCache.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +332,7 @@
 				9F26A90F2637A49B00C09F5F /* NetworkClient.swift in Sources */,
 				009C4C6E1D9F0CD600F0BC6C /* TimelineViewController.swift in Sources */,
 				009C4C6C1D9F0CD600F0BC6C /* AppDelegate.swift in Sources */,
+				9F26A91F2638BBB000C09F5F /* ImageCache.swift in Sources */,
 				9F26A9082637792A00C09F5F /* TweetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

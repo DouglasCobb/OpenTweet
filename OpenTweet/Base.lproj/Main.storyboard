@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="43k-In-iDg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ajO-AL-n24">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -7,7 +7,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Timeline View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="o1X-YN-pm4">
+            <objects>
+                <navigationController id="ajO-AL-n24" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bxe-2x-YR8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="43k-In-iDg" kind="relationship" relationship="rootViewController" id="lVh-qb-bDF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C4o-zg-FQp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-584" y="192"/>
+        </scene>
+        <!--Timeline-->
         <scene sceneID="ZKA-hd-ryM">
             <objects>
                 <tableViewController id="43k-In-iDg" customClass="TimelineViewController" customModule="OpenTweet" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,6 +36,7 @@
                             <outlet property="delegate" destination="43k-In-iDg" id="KQE-AW-LsG"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Timeline" id="2Jq-3R-l19"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCR-yZ-tSs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
