@@ -30,7 +30,7 @@ struct TimelineRequest: NetworkClientRequestProtocol {
             
             // Parse
             let timelineContainer = try decoder.decode(TimelineContainer.self, from: data)
-            
+
             // Return
             return timelineContainer.timeline
             

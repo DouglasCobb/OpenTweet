@@ -56,10 +56,21 @@ extension TimelineViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        // Get Tweet
+        let tweet = tweets[indexPath.row]
+        
         // Configure Cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetTableViewCell
-        cell.tweet = tweets[indexPath.row]
+        cell.tweet = tweet
+        cell.replies = tweets.filter { $0.inReplyTo == tweet.id }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Update Table Sizing On Selection
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
 }

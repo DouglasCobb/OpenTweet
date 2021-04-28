@@ -18,6 +18,11 @@ class TweetTableViewCell: UITableViewCell {
             updateInterface()
         }
     }
+    var replies: [Tweet]? {
+        didSet {
+            updateInterface()
+        }
+    }
     
     // MARK: Private
     
@@ -25,6 +30,7 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak private var authorLabel: UILabel!
     @IBOutlet weak private var dateLabel: UILabel!
     @IBOutlet weak private var contentLabel: UILabel!
+    @IBOutlet weak private var replyStackView: UIStackView!
     
     private var convertedContent: NSAttributedString? {
         
@@ -76,6 +82,9 @@ class TweetTableViewCell: UITableViewCell {
         
         // Super
         super.setSelected(selected, animated: animated)
+        
+        // Toggle Replies
+        replyStackView.isHidden = !replyStackView.isHidden
     }
 }
 
@@ -108,5 +117,55 @@ extension TweetTableViewCell {
         authorLabel.text = tweet?.author
         dateLabel.text = (tweet == nil) ? "N/A" : dateFormatter.string(from: tweet!.date)
         contentLabel.attributedText = convertedContent
+        
+        // Remove Reply Views
+        replyStackView.arrangedSubviews.forEach { view in
+            
+            // Remove From Arranged
+            replyStackView.removeArrangedSubview(view)
+            
+            // Remove From Superview
+            view.removeFromSuperview()
+        }
+        
+        // Create Replies
+        for reply in replies ?? [] {
+            
+            let replyView = UIView()
+            replyView.translatesAutoresizingMaskIntoConstraints = false
+            
+            // Add Stack View
+            let replyContentStackView = UIStackView()
+            replyContentStackView.axis = .vertical
+            replyView.addSubview(replyContentStackView)
+            replyContentStackView.translatesAutoresizingMaskIntoConstraints = false
+            
+            // Constraints
+            let leading = NSLayoutConstraint(item: replyContentStackView, attribute: .leading, relatedBy: .equal, toItem: replyView, attribute: .leading, multiplier: 1, constant: 0)
+            let trailing = NSLayoutConstraint(item: replyContentStackView, attribute: .trailing, relatedBy: .equal, toItem: replyView, attribute: .trailing, multiplier: 1, constant: 0)
+            let top = NSLayoutConstraint(item: replyContentStackView, attribute: .top, relatedBy: .equal, toItem: replyView, attribute: .top, multiplier: 1, constant: 0)
+            let bottom = NSLayoutConstraint(item: replyContentStackView, attribute: .bottom, relatedBy: .equal, toItem: replyView, attribute: .bottom, multiplier: 1, constant: 0)
+            
+            NSLayoutConstraint.activate([leading,trailing,top,bottom])
+            
+            // Labels
+            let replyAuthorLabel = UILabel()
+            replyAuthorLabel.text = reply.author
+            
+            let replyDate = UILabel()
+            replyDate.text = dateFormatter.string(from: reply.date)
+            
+            let replyContentLabel = UILabel()
+            replyContentLabel.text = reply.content
+            replyContentLabel.numberOfLines = 0
+            
+            // Add Content
+            replyContentStackView.addArrangedSubview(replyAuthorLabel)
+            replyContentStackView.addArrangedSubview(replyDate)
+            replyContentStackView.addArrangedSubview(replyContentLabel)
+            
+            // Add
+            replyStackView.addArrangedSubview(replyView)
+        }
     }
 }
